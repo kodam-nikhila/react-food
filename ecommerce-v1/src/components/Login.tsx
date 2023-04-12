@@ -13,19 +13,19 @@ const Login = () =>{
 
     const navigate = useNavigate();
     const[errorMessage,setErrorMessage] = useState('');
-    const handleLogin = (event:FormEvent<HTMLFormElement>) =>{
+    const handleLogin = (event : FormEvent<HTMLFormElement>) =>{
      event.preventDefault();
         const matchedUserData =
         data.users.find(
             (userData) => {
                 let result : boolean =
-                (usernameRef.current?.value ==userData.username)&&
-                (usernameRef.current?.value == userData.password);
+                (usernameRef.current?.value === userData.username)&&
+                (passwordRef.current?.value === userData.password);
                 return result;
             }
         )
         if(matchedUserData){
-            navigate("/Shopping");
+            navigate("/shopping");
         }else{
             setErrorMessage("username-password-dont match")
         }
@@ -42,7 +42,7 @@ const Login = () =>{
             )
         }
         <Form onSubmit={handleLogin}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control type="text" placeholder="Enter username" ref={usernameRef}
          />
@@ -51,7 +51,7 @@ const Login = () =>{
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" ref={usernameRef}
+        <Form.Control type="password" placeholder="Password" ref={passwordRef}
         />
       </Form.Group>
       
